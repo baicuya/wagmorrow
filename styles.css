@@ -19,8 +19,8 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--paper); color: var(--ink); }
+html { scroll-behavior: smooth; overflow-x: clip; }
+body { min-width: 0; margin: 0; overflow-x: clip; background: var(--paper); color: var(--ink); }
 img { display: block; max-width: 100%; }
 a { color: inherit; }
 
@@ -295,13 +295,14 @@ h1 { margin-bottom: 22px; font-size: clamp(3.75rem, 6.2vw, 6.4rem); line-height:
   .site-header { min-height: 76px; }
   .brand { font-size: 1.35rem; }
   .brand svg { width: 18px; height: 23px; }
-  .site-header nav { gap: 18px; }
-  .site-header nav a { font-size: 0.88rem; }
+  .site-header { align-items: flex-start; padding-top: 22px; }
+  .site-header nav { max-width: 188px; justify-content: flex-end; gap: 8px 14px; flex-wrap: wrap; }
+  .site-header nav a { font-size: 0.78rem; white-space: nowrap; }
   .hero,
   .hero-inner { min-height: 895px; }
   .hero-inner { padding-top: 104px; align-content: start; gap: 0; }
-  h1 { font-size: clamp(3.2rem, 16vw, 4.8rem); }
-  .hero-copy > p { font-size: 1.05rem; }
+  h1 { max-width: 100%; font-size: clamp(2.75rem, 14vw, 4.2rem); line-height: 0.97; overflow-wrap: normal; }
+  .hero-copy > p { max-width: 100%; font-size: 1rem; }
   .store-status { min-height: 52px; padding: 0 18px; border-radius: 17px; font-size: 0.9rem; }
   .hero-product { height: 475px; }
   .phone-shell { right: 1%; bottom: 18px; width: 225px; padding: 8px; border-width: 3px; border-radius: 39px; }
@@ -331,7 +332,10 @@ h1 { margin-bottom: 22px; font-size: clamp(3.75rem, 6.2vw, 6.4rem); line-height:
   .site-footer { min-height: 230px; padding: 36px 0; align-items: flex-start; }
   .site-footer > div { width: 100%; gap: 18px; flex-wrap: wrap; }
   .site-footer > p { margin: 0; }
-  .document-main { padding: 60px 0 90px; }
+  .document-main { min-width: 0; padding: 60px 0 90px; }
+  .document-main h1 { max-width: 100%; font-size: clamp(2.55rem, 13vw, 3.4rem); overflow-wrap: anywhere; }
+  .document-main p,
+  .document-main li { overflow-wrap: anywhere; }
   .document-lead { margin-bottom: 42px; }
 }
 
