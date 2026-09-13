@@ -10,9 +10,29 @@ From the repository root:
 python3 -m http.server 4173 --directory website
 ```
 
-Then open `http://127.0.0.1:4173/`, `/privacy/`, and `/support/`.
+Then open `http://127.0.0.1:4173/`, `/privacy.html`, `/terms.html`, and `/support.html`.
 
-## Deployment
+## GitHub Pages deployment
+
+The production site is published from the public repository
+[`baicuya/wagmorrow`](https://github.com/baicuya/wagmorrow) with GitHub Pages:
+
+- Home: `https://baicuya.github.io/wagmorrow/`
+- Privacy: `https://baicuya.github.io/wagmorrow/privacy.html`
+- Terms: `https://baicuya.github.io/wagmorrow/terms.html`
+- Support: `https://baicuya.github.io/wagmorrow/support.html`
+
+Publish the current `website/` directory with:
+
+```sh
+./scripts/deploy_github_pages.sh
+```
+
+The app reads the root address from `WAGMORROW_PUBLIC_ORIGIN` in `project.yml`.
+GitHub Pages is the production host for the free first release, so no custom
+domain, application server, database, secrets, or site build step is required.
+
+## Optional server mirror
 
 The production server is available through the SSH alias `jxd-aliyun-ecs-root`.
 Stage the current site without changing any active Caddy routes:
@@ -21,8 +41,8 @@ Stage the current site without changing any active Caddy routes:
 ./scripts/deploy_public_site.sh
 ```
 
-This syncs the static files to `/srv/wagmorrow/site`. After the domain points to
-the server, add a dedicated Caddy site block:
+This syncs the static files to `/srv/wagmorrow/site`. If a custom domain is added
+later, add a dedicated Caddy site block:
 
 ```caddyfile
 YOUR_DOMAIN {
@@ -41,12 +61,4 @@ YOUR_DOMAIN {
 }
 ```
 
-The site can be copied to any static host. Before the App Store build is uploaded:
-
-1. Point the chosen HTTPS domain at the static host.
-2. Confirm `/privacy/` and `/support/` are public without authentication.
-3. Set `WAGMORROW_PUBLIC_ORIGIN` in `project.yml` to the final `https://` origin and regenerate the Xcode project.
-4. Add the privacy, support, and marketing URLs to App Store Connect.
-5. Rebuild and test every in-app link.
-
-No application server, database, secrets, or build step is required for this version.
+The server mirror is not part of the current App Store release path.
