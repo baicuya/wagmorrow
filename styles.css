@@ -267,6 +267,19 @@ h1 { margin-bottom: 22px; font-size: clamp(3.75rem, 6.2vw, 6.4rem); line-height:
 .document-section ul,
 .document-section ol { padding-left: 1.35rem; }
 .document-section a { color: var(--sage-dark); font-weight: 700; text-underline-offset: 3px; }
+
+.license-text {
+  max-height: 40rem;
+  overflow: auto;
+  padding: 1rem;
+  border: 1px solid var(--hairline);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.66);
+  color: #52625f;
+  font: 0.78rem/1.5 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
 .support-callout { margin: 24px 0 4px; padding: 24px; border-radius: 20px; background: var(--pale); }
 .support-callout p:last-child { margin-bottom: 0; }
 .plain-button { display: inline-flex; align-items: center; min-height: 48px; margin-top: 8px; padding: 0 19px; border-radius: 15px; background: var(--sage-dark); color: white !important; text-decoration: none; }
